@@ -3,6 +3,7 @@
     <head>
     <title>Learn breakdancing</title>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link href="breakdance.css" type="text/css" rel="stylesheet">
     </head>
     
 <body>
@@ -10,16 +11,16 @@
 <a href ="DANCE.html"> <-- Back to Homepage </a>
 <h1>Learn breakdancing!</h1>
 
+<button id = "previous"></button>
+
 <div id="player"></div>  
 
+<button id = "next"></button>
 
 <section>
-    <button name = "previous">Give me something easier</button>
-    <button name = "play">Play video </button>
-    <button name = "pause"> Pause video </button>
-    <button name = "next">Give me something more difficult!</button>
+    <button id = "play"> </button>
+    <button id = "pause"> </button>
 </section>
-
 
 <script>
     
@@ -38,8 +39,8 @@
      var player;
      function onYouTubeIframeAPIReady() {
        player = new YT.Player('player', {
-         height: '390',
-         width: '640',
+         height: '420',
+         width: '670',
          videoId: '4ijB4wXwOU8', //this is the part after 'www.youtube.com/watch?v='
          events: {
            'onReady': onPlayerReady,
@@ -75,26 +76,26 @@
       
     //-------------------------------BUTTONS--------------------------------//
     
-    $("button[name=previous]").click(
+    $("button[id=previous]").click(
        function(){
            console.log("Click 'previous' caputured, the previous-button is working!")
            player.previousVideo()
      });
      
-     $("button[name=play]").click(
+     $("button[id=play]").click(
        function(){
            console.log("Click 'play' caputured, the pause-button is working!")
            player.playVideo()
      });
      
-    $("button[name=pause]").click(
+    $("button[id=pause]").click(
        function(){
            console.log("Click 'pause' caputured, the pause-button is working!")
            player.pauseVideo()
      });
      
      
-    $("button[name=next]").click(
+    $("button[id=next]").click(
        function(){
            console.log("Click 'next' caputured, the next-button is working!")
            player.nextVideo()

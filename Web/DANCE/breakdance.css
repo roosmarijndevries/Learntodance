@@ -1,0 +1,46 @@
+html {
+  text-align: center;
+}
+
+Body{
+         margin-bottom:200px;
+         background-color:#bfd0ff
+}
+
+#play{
+    background: url(http://cdn.flaticon.com/png/256/37023.png) no-repeat;
+     background-size: 128px 128px;
+     width:125px;
+     height:125px;
+     border-radius: 50%;
+     border: 2px solid #f5f5f5;
+     
+}
+
+#pause{
+    background: url(http://uxrepo.com/static/icon-sets/elusive/svg/pause-circled.svg) no-repeat;
+     background-size: 128px 128px;
+     width:128px;
+     height:128px;
+     border-radius: 50%;
+     border: 2px solid #f5f5f5;
+}
+
+#next{
+    background: url(http://uxrepo.com/static/icon-sets/flat-arrows/svg/flat-circle-chevron-right-arrow.svg) no-repeat;
+     background-size: 128px 128px;
+     width:128px;
+     height:128px;
+     border-radius: 50%;
+     border: 2px solid #f5f5f5;
+}
+
+#previous{
+    background: url(http://uxrepo.com/static/icon-sets/flat-arrows/svg/flat-circle-chevron-right-arrow.svg) no-repeat;
+     background-size: 128px 128px;
+     width:128px;
+     height:128px;
+     border-radius: 50%;
+     border: 2px solid #f5f5f5;
+     transform: scaleX(-1);
+}
