@@ -1,15 +1,22 @@
 <html>
 
     <head>
-    <title>Learn breakdancing</title>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <link href="breakdance.css" type="text/css" rel="stylesheet">
+        <title>Learn breakdancing</title>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link href="breakdances.css" type="text/css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Corben:bold' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Nobile' rel='stylesheet' type='text/css'>
     </head>
     
 <body>
   
-<a href ="DANCE.html"> <-- Back to Homepage </a>
+<a href ="DANCE.html"> Back to Homepage </a>
+
+<a href="#" class= "tooltip" data-content="Click the 'play' and 'pause' buttons to start/stop the tutorial. Use the buttons on the sides to select a tutorial that is more or less experienced" > ? </a>
+
 <h1>Learn breakdancing!</h1>
+
+<p id="demo"></p>
 
 <button id = "previous"></button>
 
@@ -39,8 +46,8 @@
      var player;
      function onYouTubeIframeAPIReady() {
        player = new YT.Player('player', {
-         height: '420',
-         width: '670',
+         height: '450',
+         width: '1000',
          videoId: '4ijB4wXwOU8', //this is the part after 'www.youtube.com/watch?v='
          events: {
            'onReady': onPlayerReady,
@@ -76,6 +83,11 @@
       
     //-------------------------------BUTTONS--------------------------------//
     
+   
+   
+    
+    
+    
     $("button[id=previous]").click(
        function(){
            console.log("Click 'previous' caputured, the previous-button is working!")
@@ -101,6 +113,33 @@
            player.nextVideo()
      });
       
+    //The next code helps changing the level of experience that the user sees
+    //in his browser by using a Loop and an Array
+      
+    $(function () { // this is a shortcut for document ready
+    var experience = ['Beginner', 'Beginner +', 'Intermediate', 'Intermediate +', 'Advanced', 'You have allready completed the last stage'],
+        counter = 0;
+
+    console.log(experience[counter]); // your initial value
+    document.getElementById("demo").innerHTML = experience[counter];
+
+    // the next line, of course, assumes you have an element with id="next"
+    $("button[id=next]").click(function () {
+        counter = (counter + 1)
+        console.log(experience[counter]); // the new incremented value
+        document.getElementById("demo").innerHTML = experience[counter];
+    });
+    
+     $("button[id=previous]").click(function () {
+        counter = (counter - 1)
+        console.log(experience[counter]); // the new incremented value
+        document.getElementById("demo").innerHTML = experience[counter];
+    });
+    
+});
+
+
+
 
       
 </script>

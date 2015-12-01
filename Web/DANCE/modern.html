@@ -1,13 +1,149 @@
 <html>
 
     <head>
-        <title>Learn to modern!</title>
+        <title>Learn Modern Dancing</title>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link href="breakdances.css" type="text/css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Corben:bold' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Nobile' rel='stylesheet' type='text/css'>
     </head>
+    
+<body>
   
-    <body>
-        <a href ="DANCE.html"><-- Back to Homepage</a>
-        <h1>Learn Modern dancing!</h1>
+<a href ="DANCE.html"> Back to Homepage </a>
 
+<a href="#" class= "tooltip" data-content="Click the 'play' and 'pause' buttons to start/stop the tutorial. Use the buttons on the sides to select a tutorial that is more or less experienced" > ? </a>
+
+<h1>Learn Modern Dancing!</h1>
+
+<p id="demo"></p>
+
+<button id = "previous"></button>
+
+<div id="player"></div>  
+
+<button id = "next"></button>
+
+<section>
+    <button id = "play"> </button>
+    <button id = "pause"> </button>
+</section>
+
+<script>
+    
+    console.log ("Script block has loaded!");
+    
+
+    //This code loads the IFrame Player API code asynchronously. 
+    //It will also replace the <div> part with id "player" in html
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+     
+     //this function creates an Iframe after the API code downloads 
+     var player;
+     function onYouTubeIframeAPIReady() {
+       player = new YT.Player('player', {
+         height: '450',
+         width: '1000',
+         videoId: 'PLOt6Fd7wPbMfJuKJlRiFtm5qfvloLHytU', //this is the part after 'www.youtube.com/watch?v='
+         events: {
+           'onReady': onPlayerReady,
+           'onStateChange': onPlayerStateChange
+         }
+       });
+     }
+      
+      //The API will call this function when the video player is ready.
+      //The function referst to a playlist, manually made in youtube
+      function onPlayerReady(event) {
+        event.target.loadPlaylist({
+        listType: 'playlist',
+        list: 'PLOt6Fd7wPbMfJuKJlRiFtm5qfvloLHytU',
+       });
+       }
+
+      //The API calls this function when the player's state changes.
+      //The function indicates that when playing a video (state=1),
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+      
+       
+      
+    
+      
+    //-------------------------------BUTTONS--------------------------------//
+    
    
-  </body>
-</html
+   
+    
+    
+    
+    $("button[id=previous]").click(
+       function(){
+           console.log("Click 'previous' caputured, the previous-button is working!")
+           player.previousVideo()
+     });
+     
+     $("button[id=play]").click(
+       function(){
+           console.log("Click 'play' caputured, the pause-button is working!")
+           player.playVideo()
+     });
+     
+    $("button[id=pause]").click(
+       function(){
+           console.log("Click 'pause' caputured, the pause-button is working!")
+           player.pauseVideo()
+     });
+     
+     
+    $("button[id=next]").click(
+       function(){
+           console.log("Click 'next' caputured, the next-button is working!")
+           player.nextVideo()
+     });
+      
+    //The next code helps changing the level of experience that the user sees
+    //in his browser by using a Loop and an Array
+      
+    $(function () { // this is a shortcut for document ready
+    var experience = ['Beginner', 'Beginner +', 'Intermediate', 'Intermediate +', 'Advanced', 'You have allready completed the last stage'],
+        counter = 0;
+
+    console.log(experience[counter]); // your initial value
+    document.getElementById("demo").innerHTML = experience[counter];
+
+    // the next line, of course, assumes you have an element with id="next"
+    $("button[id=next]").click(function () {
+        counter = (counter + 1)
+        console.log(experience[counter]); // the new incremented value
+        document.getElementById("demo").innerHTML = experience[counter];
+    });
+    
+     $("button[id=previous]").click(function () {
+        counter = (counter - 1)
+        console.log(experience[counter]); // the new incremented value
+        document.getElementById("demo").innerHTML = experience[counter];
+    });
+    
+});
+
+
+
+
+      
+</script>
+   
+</body>
+
+</html>
